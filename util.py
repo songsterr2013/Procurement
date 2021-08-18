@@ -4,8 +4,6 @@ import sys
 import logging
 from logging.handlers import TimedRotatingFileHandler
 from logging import StreamHandler
-from xlrd import open_workbook
-from openpyxl import load_workbook
 
 
 def get_logger(name):
@@ -30,26 +28,6 @@ def get_logger(name):
     logger.addHandler(std_handler)
 
     return logger
-
-
-
-'''def get_bom(bom_path, file_name):
-    path = bom_path
-    prefix = file_name[0]
-
-    completed_path = os.path.join(path, prefix, file_name)
-
-    if os.path.isfile(completed_path + '.xls'):
-        target_wb = open_workbook(completed_path + '.xls')
-        target_sh = target_wb.sheets()[0]
-        return 'xls', target_sh
-    elif os.path.isfile(completed_path + '.xlsx'):
-        target_wb = load_workbook(completed_path + '.xlsx', read_only=False)
-        target_sh = target_wb[target_wb.sheetnames[0]]
-        return 'xlsx', target_sh
-    # xls或xlsx都找不到的話就只能:
-    else:
-        return False, None'''
 
 
 def load_config():
