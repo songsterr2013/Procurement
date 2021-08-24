@@ -14,6 +14,7 @@ class Procurement:
     excluded_type = config["exclude_type"].split(',')
     written_row_index = 1
     written_column_index = 1
+    check_duplicate = tuple
 
     def __init__(self, main_excel, save_path, bom_path, pallet_path):
 
@@ -98,6 +99,7 @@ class Procurement:
             written_table.cell(row=self.written_row_index, column=self.written_column_index).value = val
             self.written_column_index += 1
 
+    # 重覆填A-J欄
     def write_action_2(self, origin):
         written_table = self._get_new_worksheet()
 
@@ -106,6 +108,7 @@ class Procurement:
         written_table.cell(row=self.written_row_index, column=self.written_column_index).value = origin[8]
         self.written_column_index += 3
 
+    # 重覆填K-L欄
     def get_required_pallet_data(self, order_name, file_name):
         product_name_loc = 0
         amount_loc = 0
